@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        
+        <title>Waldo</title>
+        
+        <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="/static/styles/main.css">
+        
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    
+    </head>
+    
+    <body>
+
+        <script>
+                var upload = {{ upload }}
+                var results = {{ results }}
+                var confidence = {{ confidence }}
+                var buffer = {{ buffer }}
+                var uploadTime = {{ uploadTime }}
+                var detectTime = {{ detectTime }}
+        </script>
+        
+        <section class="generic-banner relative">	
+            
+            <div class="container">
+                <div class="row height align-items-center justify-content-center"> 
+                    <div class="col-lg-10">
+                        
+                        <div class="generic-banner-content">    
+                            <h2 class="text-blak">Waldo</h2>
+                            <p class="text-white">Weapons Detection and Localization</p>
+                        </div>
+                        
+                        <br>
+                        <form id="myForm" method = "POST" enctype = "multipart/form-data">
+                        
+                        <label for="file-upload" class="custom-file-upload">
+                            
+                            <input class="choose" type = "file" name="file" style="color:black; display:hidden; position:absolute" value="Choose File" id="file-upload" required>
+                            
+                            <i class="cloud-upload"></i> Choose File
+                        </label>
+                        
+                        <div align="center" class="sel" id="sel">
+                            <div>
+                                &nbsp;&nbsp;
+                                <select class="form-control" id="confidence" name="conf" title="Confidence" required>
+                                    <option value="">Confidence</option>
+                                    <option value="0.5">0.5</option>
+                                    <option value="0.6">0.6</option>
+                                    <option value="0.7">0.7</option>
+                                    <option value="0.8">0.8</option>
+                                    <option value="0.9">0.9</option>
+                                </select> 
+                                &nbsp;&nbsp;
+                                
+                                <select class="form-control" id="buff" name="buff" title="Buffer" required>
+                                    <option value="">Buffer</option>
+                                    <option value="0">0</option>
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+                                    <option value="25">25</option>
+                                </select>
+                            </div>
+                        </div>
+                            
+                        <p></p>
+                            
+                        <input class=button1 type = "submit" onclick="$('#contentInput').hide(); $('#contentOutput').hide(); $('#videoInput').hide(); $('#videoOutput').hide(); $('#separator').hide(); $('#loadingInput').show(); $('#loadingOutput').show();" value="Submit"/>
+                        <input class=button2 type="button" id="clr" onClick="window.location.href=window.location.href" value="Clear">
+                                  
+                        </form>
+
+                        <p></p>
+                        <hr>    
+                        <p></p>
+                        
+                        <div class="containerTWO">    
+                            <div class="left">
+                                <h4>Input</h4>
+                                <p></p>
+                                
+                                <div id="loadingInput" style="display:none;"><img src="/static/loading-image.gif" alt="" /></div>
+                                
+                                <img id="contentInput" src="{{ upload }}" method = 'POST' alt="" onerror='this.onerror=null;this.src="/static/waldo.png";' width="320" height="240">
+                                
+                            </div> 
+                            
+                            <div class="seperator" id="separator"></div>
+                            
+                            <div class="right">
+                                <h4>Output</h4>
+                                <p></p>
+                                
+                                <div id="loadingOutput" style="display:none;"><img src="/static/loading-image.gif" alt="" /></div>
+    
+                                <img id="contentOutput" src="{{ results }}" method = 'POST' alt="" onerror='this.onerror=null;this.src="/static/waldo.png";' width="320" height="240">
+                                
+                            </div>
+                        </div>  
+                        
+                        <div class="clearfix"></div>
+                        
+                        <div class="runtime">
+                            <p></p>
+                            <p>Parameters:</p>
+                            <textarea rows="5" cols="25" style="overflow:auto">
+  {{ confidence }}
+  {{ buffer }}
+                                
+  {{ uploadTime }}
+  {{ detectTime }}           
+                            </textarea>
+                        </div>
+                        
+                    </div>      
+                </div>         
+            </div>
+            
+        </section>
+    
+    </body>
+</html>
