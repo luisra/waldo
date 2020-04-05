@@ -1,6 +1,6 @@
 Werkzeug==0.14.1
 requests==2.22.0
-Flask==0.11.1
+Flask==1.0
 Keras==2.2.4
 scenedetect==0.5
 numpy==1.16.1
