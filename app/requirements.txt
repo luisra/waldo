@@ -3,7 +3,7 @@ requests==2.22.0
 Flask==0.11.1
 Keras==2.2.4
 scenedetect==0.5
-numpy==1.16.1
+numpy==1.22.0
 moviepy==1.0.0
 Pillow==6.1.0
 protobuf==3.9.0
